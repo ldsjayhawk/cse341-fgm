@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
     //#swagger.tags=['players']
-    const result = await mongodb.getDatabase().collection('fgm_draft_players').find();
+    const result = await mongodb.getDb().collection('fgm_draft_players').find();
     result.toArray().then((players) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(players);
@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
 const getPlayer = async (req, res) => {
     //#swagger.tags=['players']
     const playerId = new ObjectId(req.params.id)
-    const result = await mongodb.getDatabase().collection('fgm_draft_players').find({_id: playerId});
+    const result = await mongodb.getDb().collection('fgm_draft_players').find({_id: playerId});
     result.toArray().then((players) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(players[0]);
@@ -30,7 +30,7 @@ const addPlayer = async (req,res) => {
         birthday: req.body.birthday
     };
 
-    const response = await mongodb.getDatabase().collection('fgm_draft_players').insertOne(player);
+    const response = await mongodb.getDb().collection('fgm_draft_players').insertOne(player);
     if (response.acknowledged) {
         res.status(204).send();
     } else {
@@ -52,7 +52,7 @@ const updatePlayer = async (req,res) => {
         birthday: req.body.birthday
     };
 
-    const response = await mongodb.getDatabase().collection('fgm_draft_players').replaceOne({ _id: playerId }, player);
+    const response = await mongodb.getDb().collection('fgm_draft_players').replaceOne({ _id: playerId }, player);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -63,7 +63,7 @@ const updatePlayer = async (req,res) => {
 const deletePlayer = async (req,res) => {
     //#swagger.tags=['players']
     const playerId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().collection('fgm_draft_players').deleteOne({ _id: playerId });
+    const response = await mongodb.getDb().collection('fgm_draft_players').deleteOne({ _id: playerId });
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {

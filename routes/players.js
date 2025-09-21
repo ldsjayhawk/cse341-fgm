@@ -5,8 +5,8 @@ const playersController = require('../controllers/players')
 router.get('/', playersController.getAll);
 router.get('/:id', playersController.getPlayer);
 
-router.post('/', playersValidationRules, playersController.addPlayer)
-router.put('/:id', playersValidationRules, playersController.updatePlayer)
+router.post('/', playersController.addPlayer)
+router.put('/:id', playersController.updatePlayer)
 router.delete('/:id', playersController.deletePlayer)
 
 module.exports = router;

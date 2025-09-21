@@ -1,6 +1,11 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const playersRouter = require('./players');
 
-router.use('/', require('./swagger'));
+// router.use('/');
+router.use('players', playersRouter);
+
+// router.use('/', require('./swagger'));
 
 router.get('/', (req, res) => { 
     //#swagger.tags=['Hello World']
