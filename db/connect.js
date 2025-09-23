@@ -23,7 +23,6 @@ const getDb = () => {
     if (!_db) {
         throw Error('Database not initialized');
     } 
-    console.log(_db);
     return _db;
 };
 
