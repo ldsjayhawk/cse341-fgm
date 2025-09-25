@@ -4,7 +4,7 @@ const mongo = require('./db/connect');
 const bodyParser = require('body-parser');
 // const swaggerRouter = require('./routes/swagger');
 
-const port = process.env.PORT || 3000; // declare port
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
