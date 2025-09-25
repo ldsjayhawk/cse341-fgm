@@ -45,11 +45,11 @@ const updateTeam = async (req,res) => {
 
     const teamId = new ObjectId(req.params.id);
     const team = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        team: req.body.team,
+        teamCode: req.body.teamCode,
+        gmNumber: req.body.gmNumber,
+        backColor: req.body.backColor,
+        foreColor: req.body.foreColor
     };
 
     const response = await mongodb.getDb().collection('fgm_teams').replaceOne({ _id: teamId }, team);

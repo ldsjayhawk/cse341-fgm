@@ -23,12 +23,16 @@ const getGm = async (req, res) => {
 
 const addGm = async (req,res) => {
     //#swagger.tags=['gms']
+    const current = req.body.current ? Number(req.body.current):undefined;
+    const gmNumber = req.body.gmNumber ? Number(req.body.gmNumber):undefined;
     const gm = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        gmName: req.body.gmName,
+        gmNumber: gmNumber,
+        profslId: req.body.profslId,
+        fantraxId: req.body.fantraxId,
+        teamCode: req.body.teamCode,
+        joinDate: req.body.joinDate,
+        current: current
     };
 
     const response = await mongodb.getDb().collection('fgm_gms').insertOne(gm);
@@ -46,11 +50,13 @@ const updateGm = async (req,res) => {
 
     const gmId = new ObjectId(req.params.id);
     const gm = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        gmName: req.body.gmName,
+        gmNumber: req.body.gmNumber,
+        profslId: req.body.profslId,
+        fantraxId: req.body.fantraxId,
+        teamCode: req.body.teamCode,
+        joinDate: req.body.joinDate,
+        current: req.body.current
     };
 
     const response = await mongodb.getDb().collection('fgm_gms').replaceOne({ _id: gmId }, gm);
