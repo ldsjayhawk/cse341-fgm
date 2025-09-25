@@ -1,25 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const playersRouter = require('./draftPlayers');
-const teamsRouter = require('./teams');
+const draftPlayersRouter = require('./draftPlayers');
+// const teamsRouter = require('./teams');
 const gmsRouter = require('./gms');
+const swaggerRouter = require('./swagger');
 
 
 // router.use('/');
-router.use('players', playersRouter);
-router.use('teams', teamsRouter);
-router.use('gms', gmsRouter);
-
-
-// router.use('/', require('./swagger'));
+router.use('/draftPlayers', draftPlayersRouter);
+// router.use('/teams', teamsRouter);
+router.use('/gms', gmsRouter);
+router.use('/', swaggerRouter);
 
 router.get('/', (req, res) => { 
     //#swagger.tags=['Hello World']
     res.send('Hello World');
 });
-
-router.use('/players', require('./draftPlayers'));
-router.use('/teams', require('./teams'));
-router.use('/gms', require('./gms'));
 
 module.exports = router;
