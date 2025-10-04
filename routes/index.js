@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const draftPlayersRouter = require('./draftPlayers');
-// const teamsRouter = require('./teams');
 const gmsRouter = require('./gms');
+// const teamsRouter = require('./teams');
 const swaggerRouter = require('./swagger');
 
 

@@ -1,10 +1,17 @@
 const express = require('express');
 const app = express();
+
 const mongo = require('./db/connect');
 const bodyParser = require('body-parser');
-// const swaggerRouter = require('./routes/swagger');
+
+const swaggerRouter = require('./routes/swagger');
+
+// const passport = require('passport');
+// const session = require('express-session')
 
 const port = process.env.PORT || 3000;
+const errorHandler = require('./utilities/errorHandler');
+
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -17,7 +24,8 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/', require('./routes'));
-// app.use('/api-docs', swaggerRouter);
+app.use(errorHandler)
+app.use('/api-docs', swaggerRouter);
 
 
 mongo.initDb((err) => {
