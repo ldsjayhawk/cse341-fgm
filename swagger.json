@@ -5,7 +5,7 @@
     "description": "FGM Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://cse341-fgm.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -30,9 +30,6 @@
           "draftPlayers"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -51,6 +48,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "rank": {
+                  "example": "any"
+                },
                 "firstName": {
                   "example": "any"
                 },
@@ -58,9 +58,6 @@
                   "example": "any"
                 },
                 "position": {
-                  "example": "any"
-                },
-                "rank": {
                   "example": "any"
                 },
                 "fgm_team": {
@@ -71,11 +68,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "201": {
+            "description": "Created"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -86,9 +83,6 @@
           "draftPlayers"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -100,6 +94,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -144,8 +141,8 @@
           "204": {
             "description": "No Content"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -166,8 +163,8 @@
           "204": {
             "description": "No Content"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -178,9 +175,6 @@
           "gms"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -199,10 +193,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "gmName": {
+                "current": {
                   "example": "any"
                 },
                 "gmNumber": {
+                  "example": "any"
+                },
+                "gmName": {
                   "example": "any"
                 },
                 "profslId": {
@@ -216,20 +213,17 @@
                 },
                 "joinDate": {
                   "example": "any"
-                },
-                "current": {
-                  "example": "any"
                 }
               }
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "201": {
+            "description": "Created"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -240,9 +234,6 @@
           "gms"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -254,6 +245,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -304,8 +298,8 @@
           "204": {
             "description": "No Content"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -326,8 +320,8 @@
           "204": {
             "description": "No Content"
           },
-          "500": {
-            "description": "Internal Server Error"
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -344,7 +338,6 @@
     }
   },
   "schemas": [
-    "https",
-    "http"
+    "https"
   ]
 }
