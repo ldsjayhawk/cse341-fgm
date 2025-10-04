@@ -16,7 +16,7 @@ validate.draftPlayerValidationRules = () => {
         body('lastName').isString().notEmpty().isLength({min:2, max:30}).withMessage('Last Name must be between 2 and 30 letters'),
         body('position').isString().notEmpty().isLength({min:2, max:3}).withMessage('Position must be 2 or 3 characters'),
         body('rank').optional().isInt({min:1, max:500}).withMessage('Rank must be a number under 500'),
-        body('fgm_team').optional().isString().isLength({min:3, max:3}).withMessage('Team code must be between 3 letters')
+        body('fgm_team').optional().isString().isLength({min:2, max:3}).withMessage('Team code must be 2 or 3 letters')
     ]
 };
 
