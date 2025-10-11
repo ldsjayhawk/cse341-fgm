@@ -27,6 +27,20 @@ app.use(session({
 // Basic express session initialization
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader(
+//         'Access-Control-Allow-Headers',
+//         'Origin, X-Requested-With', 'Content-Type', 'Accept', 'Z-Key'
+//     );
+//     res.setHeader(
+//         'Access-Control-Allow-Methods',
+//         'GET, POST, PUT, DELETE, OPTIONS, PATCH');
+//         next();
+//     })
+//     app.use(cors({ methods: ['GET, POST, PUT, DELETE, OPTIONS, PATCH'] }));
+//     app.use(cors({ origin: '*' }));
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
