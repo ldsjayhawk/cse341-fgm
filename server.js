@@ -50,7 +50,7 @@ app.use(cors({
 }));
 
 // Let Express handle OPTIONS requests
-app.options('*', cors());
+app.options('/*', cors());
 
 
 //------------------
