@@ -41,19 +41,17 @@ app.use(passport.session());
 //     app.use(cors({ methods: ['GET, POST, PUT, DELETE, OPTIONS, PATCH'] }));
 //     app.use(cors({ origin: '*' }));
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With', 'Content-Type', 'Accept', 'Z-Key'
-    );
-    res.setHeader(
-        'Access-Control-Allow-Methods',
-        'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-        next();
-    })
-    app.use(cors({ methods: ['GET, POST, PUT, DELETE, OPTIONS, PATCH'] }));
-    app.use(cors({ origin: '*' }));
+
+app.use(cors({
+  origin: ['https://cse341-fgm.onrender.com', 'http://localhost:3000'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Z-Key'],
+  credentials: true // needed for sessions / passport
+}));
+
+// Let Express handle OPTIONS requests
+app.options('*', cors());
+
 
 //------------------
 // PASSPORT 
