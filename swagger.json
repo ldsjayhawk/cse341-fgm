@@ -5,10 +5,9 @@
     "description": "FGM Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://cse341-fgm.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
@@ -377,7 +376,6 @@
     }
   },
   "schemas": [
-    "https",
-    "http"
+    "https"
   ]
 }
