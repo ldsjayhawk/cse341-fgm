@@ -4,6 +4,7 @@ const router = express.Router();
 const validate = require('../utilities/validation')
 const asyncHandler = require('../utilities/asyncHandler');
 const gmsController = require('../controllers/gms')
+const { isAuthenticated } = require('../utilities/authenticate');
 
 router.get('/',
     asyncHandler(async(req, res) => {
@@ -36,6 +37,7 @@ router.get('/:id',
 );
 
 router.post('/', 
+    isAuthenticated,
     validate.gmValidationRules(),
     validate.checkGm,
     asyncHandler(async(req, res) => {
@@ -52,6 +54,7 @@ router.post('/',
 );
 
 router.put('/:id',
+    isAuthenticated,
     validate.checkMongoId,
     validate.gmValidationRules(),
     validate.checkGm,
@@ -69,6 +72,7 @@ router.put('/:id',
 )
 
 router.delete('/:id',
+    isAuthenticated,
     validate.checkMongoId,
     asyncHandler(async(req, res) => {
         const result = await gmsController.deleteGm(req, res);

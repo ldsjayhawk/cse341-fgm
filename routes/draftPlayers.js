@@ -4,6 +4,7 @@ const router = express.Router();
 const validate = require('../utilities/validation');
 const asyncHandler = require('../utilities/asyncHandler');
 const draftPlayersController = require('../controllers/draftPlayers');
+const { isAuthenticated } = require('../utilities/authenticate');
 
 router.get('/',
     asyncHandler(async(req, res) => {
@@ -35,6 +36,7 @@ router.get('/:id',
 );
 
 router.post('/', 
+    isAuthenticated,
     validate.draftPlayerValidationRules(),
     validate.checkDraftPlayer,
     asyncHandler(async(req, res) => {
@@ -50,6 +52,7 @@ router.post('/',
 );
 
 router.put('/:id',
+    isAuthenticated,
     validate.checkMongoId,
     validate.draftPlayerValidationRules(),
     validate.checkDraftPlayer,
@@ -67,6 +70,7 @@ router.put('/:id',
 )
 
 router.delete('/:id',
+    isAuthenticated,
     validate.checkMongoId,
     asyncHandler(async(req, res) => {
         const result = await draftPlayersController.deleteDraftPlayer(req, res);
