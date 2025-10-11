@@ -49,8 +49,8 @@ app.use(cors({
   credentials: true // needed for sessions / passport
 }));
 
-// Let Express handle OPTIONS requests
-app.options('/*', cors());
+// // Let Express handle OPTIONS requests
+// app.options('/*', cors());
 
 
 //------------------
